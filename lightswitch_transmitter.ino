@@ -5,15 +5,33 @@
  *  LED's connected). Upon 5V -> 0V, transmit RF signal to turn them off.
 */
 
+const int ledPin = 13;       // number of LED pin
+const int signalPin = A0;    // the number of the pushbutton pin
+
 float input_voltage = 0.0;
 float temp=0.0;
+float r1=90900.0;
+float r2=10000.0;
+int   analog_value = 0;
 
-void setup() {
-  // put your setup code here, to run once:
-
+void setup() {              // put your setup code here, to run once:
+  pinMode(ledPin, OUTPUT);  // initialize the LED pin as an output
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop() { // put your main code here, to run repeatedly:
 
+  // read & calculate input voltage
+  analog_value = analogRead(A0); // A0 is where the signal pin connects
+  temp = (analog_value * 5.0) / 1024.0; 
+  input_voltage = temp / (r2/(r1+r2));
+
+  if (input_voltage < 0.1) 
+   {
+     input_voltage=0.0;
+     // send RF signal to turn lights off
+     // turn LED off
+   } else {
+     // send RF signal to turn lights on
+     // turn LED on
+   }
 }
