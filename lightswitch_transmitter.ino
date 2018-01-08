@@ -27,13 +27,13 @@ void loop() { // put your main code here, to run repeatedly:
   analog_value  = analogRead(A0); // A0 is where the signal pin connects
   input_voltage = (analog_value * 5.0) / 1024.0; 
 
-  if (input_voltage < 1) {
+  if (input_voltage < 4) {    // less than 4V
      input_voltage=0.0;
      // send RF signal to turn lights off
      // turn LED off
      digitalWrite(ledPin, LOW);
      lightsAreOn = false;
-   } else if (input_voltage < 6) { 
+   } else if (input_voltage < 6) { // up to 6V (USB is 5V)
      // send RF signal to turn lights on
      // turn LED on
      digitalWrite(ledPin, HIGH);
