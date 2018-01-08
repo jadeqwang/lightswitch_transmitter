@@ -25,8 +25,7 @@ void loop() { // put your main code here, to run repeatedly:
 
   // read & calculate input voltage
   analog_value  = analogRead(A0); // A0 is where the signal pin connects
-  temp          = (analog_value * 5.0) / 1024.0; 
-  input_voltage = temp / (r2/(r1+r2));
+  input_voltage = (analog_value * 5.0) / 1024.0; 
 
   if (input_voltage < 1) {
      input_voltage=0.0;
