@@ -27,7 +27,7 @@ void loop() { // put your main code here, to run repeatedly:
   analog_value  = analogRead(A0); // A0 is where the signal pin connects
   input_voltage = (analog_value * 5.0) / 1024.0; 
 
-  if (input_voltage < 4) {    // less than 4V
+  if (input_voltage < 4.5) {    // less than 4.5V
      input_voltage=0.0;
      // send RF signal to turn lights off
      // turn LED off
